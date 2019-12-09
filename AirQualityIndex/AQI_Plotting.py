@@ -8,11 +8,10 @@ Created on Tue Dec  3 22:43:10 2019
 import pandas as pd
 import matplotlib.pyplot as plt
 
-def avg_data(year):
+def avg_data_2013():
     temp_i=0
     average = []
-    csvFile = 'Data/AQI_data/aqi{}.csv'.format(year)
-    for rows in pd.read_csv(csvFile,chunksize=24):
+    for rows in pd.read_csv('Data/AQI_data/aqi2013.csv',chunksize=24):
         add_var=0
         avg=0.0
         data=[]
@@ -149,7 +148,7 @@ def avg_data_2018():
     return average
 
 if __name__== "__main__":
-    lst2013 = avg_data(2013)
+    lst2013 = avg_data_2013()
     lst2014 = avg_data_2014()
     lst2015 = avg_data_2015()
     lst2016 = avg_data_2016()
@@ -158,7 +157,7 @@ if __name__== "__main__":
     plt.plot(range(0,365),lst2013,label="2013")
     plt.plot(range(0,364),lst2014,label="2014")
     plt.plot(range(0,365),lst2015,label="2015")
-    plt.plot(range(0,121),lst2016,label="2016")
+    plt.plot(range(0,365),lst2016,label="2016")
     #plt.plot(range(0,365),lst2017,label="2017")
     #plt.plot(range(0,364),lst2018,label="2018")
     plt.xlabel('Day')
